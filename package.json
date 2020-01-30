@@ -1,0 +1,23 @@
+{
+  "name": "simplytask7",
+  "version": "1.0.0",
+  "description": "node express pug",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seda1094/simplyTask7.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seda1094/simplyTask7/issues"
+  },
+  "homepage": "https://github.com/seda1094/simplyTask7#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^2.0.4"
+  }
+}
