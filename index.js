@@ -3,26 +3,33 @@ const app = express()
 const path = require('path')
 
 app.use(express.static(path.join(__dirname, 'public')))
+app.set('view engine','pug')
+app.set('views', './views')
+
+
 
 app.get('/',(req,res)=>{
-    res.send("hello")
+    res.render('index',{})
 })
 app.get('/tasks',(req,res)=>{
-    res.send("/tasks")
+    res.render('tasks',{})
 })
 app.get('/tasks/:id',(req,res)=>{
-    res.send("/task/:id")
+    res.render('task',{})
 })
 app.post('/tasks/add',(req,res)=>{
-    res.send('/tasks/add')
+    //some code
+    res.redirect('/tasks')
 })
 app.post('/tasks/:id/edit',(req,res)=>{
-    res.send("/tasks/:id/edit")
+    res.render('task-edit',{})
 })
 app.post('/tasks/delete',(req,res)=>{
-    res.send("/tasks/delet")
+    //some code
+    res.redirect('/tasks')
 })
 
-app.listen(3000, ()=>{
+const PORT = process.env.PORT || 3000
+app.listen(PORT, ()=>{
     console.log("You are connected!!!");
 })
