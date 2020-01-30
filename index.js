@@ -21,7 +21,7 @@ app.post('/tasks/add',(req,res)=>{
     //some code
     res.redirect('/tasks')
 })
-app.post('/tasks/:id/edit',(req,res)=>{
+app.post('/tasks/edit/:id',(req,res)=>{
     res.render('task-edit',{})
 })
 app.post('/tasks/delete',(req,res)=>{
