@@ -7,13 +7,15 @@ html(lang="en")
   body
     div.container.task_container
       section.create_section
-        form(action="/tasks/add" method="POST")
-          input(type="text" name="title" placeholder="your title")
-          br
-          input(type="text" name="instruction" placeholder="your instruction")
-          br
-          input(type="submit" value="submit").button
-          img(src="/assets/duck.gif", alt="")
+        div
+          h1 Don't create task
+          form(action="/tasks/add" method="POST")
+            input(type="text" name="title" placeholder="your title")
+            br
+            input(type="text" name="instruction" placeholder="your instruction")
+            br
+            input(type="submit" value="submit").button
+            img(src="/assets/duck.gif", alt="")
       section.tasks_section
         div.tasks
           for t,index in tasks
