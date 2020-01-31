@@ -36,6 +36,7 @@ app.set("views", "./views");
 app.get("/", (req, res) => {
     res.render("index", {});
 });
+
 app.get("/tasks", async (req, res) => {
     try {
         const tasks = await Task.find();
@@ -47,6 +48,7 @@ app.get("/tasks", async (req, res) => {
         console.log(e);
     }
 });
+
 // app.get('/tasks/:id',(req,res)=>{
 //     res.render('task',{})
 // })
@@ -63,7 +65,6 @@ app.post("/tasks/add", async (req, res) => {
         console.log(e);
     }
 });
-
 
 app.post("/tasks/edit/", async (req, res) => {
     try {
@@ -86,13 +87,11 @@ app.get("/tasks/edit/:id", async (req, res) => {
     }
 });
 
-
 app.get("/tasks/delete/:id", async (req, res) => {
     try {
         await Task.deleteOne({
             _id: req.params.id
         })
-
         res.redirect("/tasks");
     } catch (error) {
         console.log(error);
@@ -102,7 +101,6 @@ app.get("/tasks/delete/:id", async (req, res) => {
 async function start(params) {
     const url = "mongodb+srv://seda1094:aaaa@cluster0-vzrkd.mongodb.net/todo";
     const PORT = process.env.PORT || 3000;
-
     try {
         await mongoose.connect(url, {
             useUnifiedTopology: true,
