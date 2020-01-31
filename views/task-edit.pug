@@ -2,15 +2,23 @@ doctype html
 html(lang="en")
   head
     title= pageTitle
-    script(type='text/javascript').
-      if (foo) bar(1 + 5)
+    block styles
+    link(rel="stylesheet" type="text/css" href="/style.css")
   body
-    h1 TASK EDIT
-    #container.col
-      if youAreUsingPug
-        p You are amazing
-      else
-        p Get on it!
-      p.
-        Pug is a terse and simple templating language with a
-        strong focus on performance and powerful features.
+    div.tasks_container
+      section.create_section
+        form(action="/tasks/edit" method="POST")
+          - id=task.id
+            input(type="hidden" name="id" placeholder="your title" value=id)
+          - title=task.title
+            input(type="text" name="title" placeholder="your title" value=title)
+          br
+          - instruction = task.instruction
+            input(type="text" name="instruction" placeholder="your instruction" value=instruction)
+          br
+          input(type="submit" value="submit").button
+          img(src="/assets/duck.gif", alt="")
+      section.funny_section
+        img(src="/assets/fish.gif", alt="")
+        
+          

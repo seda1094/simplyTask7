@@ -66,12 +66,33 @@ app.post("/tasks/add", async (req, res) => {
     }
 });
 
-app.post("/tasks/edit/", async (req, res) => {
+app.post("/tasks/edit", async (req, res) => {
     try {
-        console.log("hello"); 
+        const { id } = req.body
+        delete req.body.id
+        const task = await Task.findById(id)
+        Object.assign(task, {
+            title: req.body.title,
+            instruction: req.body.instruction
+        })
+        await task.save()
+        res.redirect('/tasks')
+    } catch (error) {
+        console.log(error)
     }
-    catch (e) {
-        console.log(e);
+});
+
+app.get("/tasks/done/:id", async (req, res) => {
+    try {
+        const { id } = req.params
+        const task = await Task.findById(id)
+        Object.assign(task, {
+            done: true,
+        })
+        await task.save()
+        res.redirect('/tasks')
+    } catch (error) {
+        console.log(error)
     }
 });
 
@@ -79,7 +100,7 @@ app.get("/tasks/edit/:id", async (req, res) => {
     try {
         const task = await Task.findById(req.params.id)
         res.render("task-edit", {
-            tasks: task
+            task: task
         });
     }
     catch (e) {
