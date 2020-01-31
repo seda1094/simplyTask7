@@ -2,15 +2,29 @@ doctype html
 html(lang="en")
   head
     title= pageTitle
-    script(type='text/javascript').
-      if (foo) bar(1 + 5)
+    block styles
+    link(rel="stylesheet" type="text/css" href="/style.css")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js")
+    script(src="script.js")
+
   body
-    h1 Pug - node template engine
-    #container.col
-      if youAreUsingPug
-        p You are amazing
-      else
-        p Get on it!
-      p.
-        Pug is a terse and simple templating language with a
-        strong focus on performance and powerful features.
+    div.main_container
+      section.cover_section
+      section.wellcome_section
+        div
+          div.text
+            img(src='/assets/frog.gif')
+            h1 .HELLO
+          button.button
+            a(href='/tasks') tasks --> 
+
+    //- h1#typed-strings | Pug - node template engine
+    //- #container.col
+    //-   if youAreUsingPug
+    //-     p.element You are amazing
+    //-   else
+    //-     p.element Get on it!
+    //-   p.element
+    //-     Pug is a terse and simple templating language with a
+    //-     strong focus on performance and powerful features.
+    
