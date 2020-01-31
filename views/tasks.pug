@@ -4,11 +4,8 @@ html(lang="en")
     title= pageTitle
     block styles
     link(rel="stylesheet" type="text/css" href="/style.css")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js")
-    script(src="script.js")
-
   body
-    div.tasks_container
+    div.container.task_container
       section.create_section
         form(action="/tasks/add" method="POST")
           input(type="text" name="title" placeholder="your title")
@@ -27,6 +24,8 @@ html(lang="en")
                 h1 ##{index+1} #{t.title}
               div.settings
                 - url=t.id 
+                a(href='/tasks/' + url)
+                  img(src="/assets/icons/foreign.png", alt="") 
                 a(href='/tasks/done/' + url)
                   img(src="/assets/icons/check.png", alt="")  
                 a(href='/tasks/edit/' + url)

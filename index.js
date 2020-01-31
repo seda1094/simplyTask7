@@ -49,9 +49,18 @@ app.get("/tasks", async (req, res) => {
     }
 });
 
-// app.get('/tasks/:id',(req,res)=>{
-//     res.render('task',{})
-// })
+app.get('/tasks/:id', async (req,res)=>{
+    try {
+        const task = await Task.findById(req.params.id)
+        res.render("task", {
+            task: task
+        });
+    }
+    catch (e) {
+        console.log(e);
+    }
+})
+
 app.post("/tasks/add", async (req, res) => {
     const task = Task({
         title: req.body.title,
