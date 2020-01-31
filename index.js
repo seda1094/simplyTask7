@@ -1,29 +1,7 @@
-const tasks = [
-    {
-        id: 1,
-        title: "Shop",
-        instruction: "lorem lorem",
-        done: true
-    },
-    {
-        id: 2,
-        title: "Play",
-        instrucyions: "lorem lorem",
-        done: false
-    },
-    {
-        id: 3,
-        title: "Code",
-        instrucyions: "lorem lorem",
-        done: true
-    }
-];
-
 const express = require("express");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
-const uniqid = require("uniqid");
 const mongoose = require("mongoose");
 const Task = require("./models/task");
 
@@ -49,7 +27,7 @@ app.get("/tasks", async (req, res) => {
     }
 });
 
-app.get('/tasks/:id', async (req,res)=>{
+app.get('/tasks/:id', async (req, res) => {
     try {
         const task = await Task.findById(req.params.id)
         res.render("task", {
@@ -96,7 +74,7 @@ app.get("/tasks/done/:id", async (req, res) => {
         const { id } = req.params
         const task = await Task.findById(id)
         Object.assign(task, {
-            done: true,
+            done: !task.done,
         })
         await task.save()
         res.redirect('/tasks')
@@ -128,7 +106,7 @@ app.get("/tasks/delete/:id", async (req, res) => {
     }
 });
 
-async function start(params) {
+async function start() {
     const url = "mongodb+srv://seda1094:aaaa@cluster0-vzrkd.mongodb.net/todo";
     const PORT = process.env.PORT || 3000;
     try {
