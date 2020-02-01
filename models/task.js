@@ -1,6 +1,5 @@
 const {Schema, model} = require('mongoose')
 
-
 const taskSchema = new Schema({
     title: {
       type: String,
@@ -13,6 +12,10 @@ const taskSchema = new Schema({
     done:{
         type: Boolean,
         default: false
+    },
+    date:{
+      type: String,
+      required: true
     }
   })
   module.exports = model('Task', taskSchema)

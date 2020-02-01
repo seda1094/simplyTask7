@@ -18,14 +18,15 @@ html(lang="en")
             img(src="/assets/duck.gif", alt="")
       section.tasks_section
         div.tasks
-          for t,index in tasks
+          for task,index in tasks
             div.task
-              if t.done
-                h1.done ##{index+1} #{t.title}
+              if task.done
+                h1.done ##{index+1} #{task.title}
               else
-                h1 ##{index+1} #{t.title}
+                h1 ##{index+1} #{task.title}
+              p.time #{task.date}
               div.settings
-                - url=t.id 
+                - url=task.id 
                 a(href='/tasks/' + url)
                   img(src="/assets/icons/foreign.png", alt="") 
                 a(href='/tasks/done/' + url)

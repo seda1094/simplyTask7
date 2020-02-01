@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Code&display=swap");
-
+@import url('https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text&display=swap');
 * {
   padding: 0;
   margin: 0;
@@ -211,4 +211,9 @@ input:focus {
 
 .tasks_container .funny_section img {
   width: 100%;
+}
+
+.time{
+  font-family: 'Libre Barcode 128 Text', cursive;
+  font-size: 30px;
 }

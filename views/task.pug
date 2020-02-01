@@ -12,6 +12,8 @@ html(lang="en")
         div.tasks
           div.task
             h1=task.title
+            p.time=task.date
+            br
             p=task.instruction
             div.settings
               - url=task.id 
