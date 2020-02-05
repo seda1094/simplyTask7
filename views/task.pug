@@ -13,6 +13,8 @@ html(lang="en")
           div.task
             h1=task.title
             p.time=task.date
+            p.priority priority: ##{task.priority}
+            p.deadline deadline: ##{task.deadline}
             br
             p=task.instruction
             div.settings

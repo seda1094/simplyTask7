@@ -4,6 +4,7 @@ html(lang="en")
     title= pageTitle
     block styles
     link(rel="stylesheet" type="text/css" href="/style.css")
+    script(src="script.js")
   body
     div.container.task_container
       section.create_section
@@ -14,25 +15,55 @@ html(lang="en")
             br
             input(type="text" name="instruction" placeholder="your instruction")
             br
+            input(type="date" name="deadline")
+            br
+            p Priority
+            input(onchange="displayRangeNumber()" id="myRange" class="range" type="range" value="0" name="priority" min="0" max="10" step="1")
+            div.rangeNumberDiv
+              p#rangeNumber 0
+            br
             input(type="submit" value="submit").button
             img(src="/assets/duck.gif", alt="")
       section.tasks_section
         div.tasks
           for task,index in tasks
-            div.task
-              if task.done
-                h1.done ##{index+1} #{task.title}
-              else
-                h1 ##{index+1} #{task.title}
-              p.time #{task.date}
-              div.settings
-                - url=task.id 
-                a(href='/tasks/' + url)
-                  img(src="/assets/icons/foreign.png", alt="") 
-                a(href='/tasks/done/' + url)
-                  img(src="/assets/icons/check.png", alt="")  
-                a(href='/tasks/edit/' + url)
-                  img(src="/assets/icons/edit.png", alt="")  
-                a(href='/tasks/delete/' + url)
-                  img(src="/assets/icons/cancel.png", alt="") 
+            if task.expire
+              div.task.expire
+                if task.done
+                  h1.done ##{index+1} #{task.title}
+                else
+                  h1 ##{index+1} #{task.title}
+                p.time #{task.date}
+                p.priority priority: ##{task.priority}
+                p.deadline deadline: ##{task.deadline}
+                div.settings
+                  - url=task.id 
+                  a(href='/tasks/' + url)
+                    img(src="/assets/icons/foreign.png", alt="") 
+                  a(href='/tasks/done/' + url)
+                    img(src="/assets/icons/check.png", alt="")  
+                  a(href='/tasks/edit/' + url)
+                    img(src="/assets/icons/edit.png", alt="")  
+                  a(href='/tasks/delete/' + url)
+                    img(src="/assets/icons/cancel.png", alt="") 
+            else
+              div.task
+                  if task.done
+                    h1.done ##{index+1} #{task.title}
+                  else
+                    h1 ##{index+1} #{task.title}
+                  p.time #{task.date}
+                  p.priority priority: ##{task.priority}
+                  p.deadline deadline: ##{task.deadline}
+
+                  div.settings
+                    - url=task.id 
+                    a(href='/tasks/' + url)
+                      img(src="/assets/icons/foreign.png", alt="") 
+                    a(href='/tasks/done/' + url)
+                      img(src="/assets/icons/check.png", alt="")  
+                    a(href='/tasks/edit/' + url)
+                      img(src="/assets/icons/edit.png", alt="")  
+                    a(href='/tasks/delete/' + url)
+                      img(src="/assets/icons/cancel.png", alt="") 
           

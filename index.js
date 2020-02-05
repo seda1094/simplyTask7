@@ -18,8 +18,10 @@ app.get("/", (req, res) => {
 
 app.get("/tasks", async (req, res) => {
     try {
-        const tasks = await Task.find()
-
+        const task = new Task()
+        // check expired deadlines
+        await task.checkExpiredDeadlines()
+        const tasks = await Task.find().sort({"priority":-1})
         res.render("tasks", {
             tasks: tasks
         });
@@ -45,7 +47,9 @@ app.post("/tasks/add", async (req, res) => {
         title: req.body.title,
         instruction: req.body.instruction,
         done: false,
-        date: moment().format('MMMM Do YYYY, h:mm:ss a')
+        date: Date.now(),
+        priority: req.body.priority,
+        deadline: new Date(req.body.deadline)
     })
     try {
         await task.save()

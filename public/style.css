@@ -217,3 +217,49 @@ input:focus {
   font-family: 'Libre Barcode 128 Text', cursive;
   font-size: 30px;
 }
+
+.expire{
+  background-color: #f16d6d;
+  border-color: #8a3a3a !important;
+}
+.rangeNumberDiv{
+  border: 5px solid white;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+}
+
+.rangeNumberDiv p{
+  font-size: x-large;
+}
+.task_container form{
+  font-family: "Fira Code", monospace;
+  color: orange;
+}
+
+.range{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 70%;
+  height: 25px;
+  background: black;
+  outline: none;
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: orange;
+  cursor: pointer;
+}
+
+.priority{
+  background: #05e60f;
+  display: inline;
+}
+
+.deadline{
+  background: #e03c3c
+}
+
