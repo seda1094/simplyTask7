@@ -177,6 +177,16 @@ input:focus {
   margin: 20px auto;
 }
 
+.container section .tasks form {
+  width: 100%;
+  height: 10%;
+}
+
+.container section .tasks form input{
+  border-color: black;
+  color: #e03c3c
+}
+
 .container section .tasks .task .text {
   width: 80%;
   height: auto;

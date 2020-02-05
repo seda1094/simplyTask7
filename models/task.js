@@ -3,10 +3,12 @@ const { Schema, model } = require('mongoose')
 const taskSchema = new Schema({
   title: {
     type: String,
+    text: true,
     required: true
   },
   instruction: {
     type: String,
+    text: true,
     required: true
   },
   done: {

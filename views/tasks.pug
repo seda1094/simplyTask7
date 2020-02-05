@@ -26,6 +26,10 @@ html(lang="en")
             img(src="/assets/duck.gif", alt="")
       section.tasks_section
         div.tasks
+          form(action="/task/search" method="POST")
+            input(type="text" name="search")
+            input(type="submit" name="submit")
+          if tasks
           for task,index in tasks
             if task.expire
               div.task.expire
@@ -66,4 +70,7 @@ html(lang="en")
                       img(src="/assets/icons/edit.png", alt="")  
                     a(href='/tasks/delete/' + url)
                       img(src="/assets/icons/cancel.png", alt="") 
+          else
+            br
+            h1 Not Found
           

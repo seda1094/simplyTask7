@@ -21,12 +21,30 @@ app.get("/tasks", async (req, res) => {
         const task = new Task()
         // check expired deadlines
         await task.checkExpiredDeadlines()
-        const tasks = await Task.find().sort({"priority":-1})
+        const tasks = await Task.find().sort({ "priority": -1 })
         res.render("tasks", {
             tasks: tasks
         });
     } catch (e) {
         console.log(e)
+    }
+});
+
+app.post("/task/search", async (req, res) => {
+    const search = (req.body.search).toString()
+    if (!search) {
+        res.redirect("/tasks")
+    }
+    else {
+        try {
+            const tasks = await Task.find({ $text: { $search: search } }, { score: { $meta: "textScore" } }).sort({ "priority": -1 })
+
+            res.render("tasks", {
+                tasks: tasks
+            });
+        } catch (e) {
+            console.log(e)
+        }
     }
 });
 
